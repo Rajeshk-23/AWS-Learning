@@ -1,0 +1,93 @@
+AWS EC2 Deep Dive: Deploy Jenkins on AWS
+
+This video provides a deep dive into AWS EC2, explaining theoretical concepts and guiding through a practical project to deploy Jenkins.
+
+1. Introduction to EC2
+
+EC2 stands for Elastic Cloud Compute.
+It is one of the most widely used and popular AWS services.
+Compute: Refers to requesting AWS to provide a virtual server (combination of CPU, RAM, and disk). AWS uses hypervisors to create virtual machines from physical servers.
+Cloud: Denotes that it's a public cloud platform.
+Elastic: Means the service can be scaled up or scaled down (resources can be increased or decreased) on demand. Many AWS services with "elastic" in their name offer this scalability (e.g., Elastic Kubernetes Service, Elastic Load Balancer).
+2. Why Use EC2 Instances?
+
+Reduced Maintenance: AWS handles maintenance, upgrades, security patching, and monitoring server uptime, reducing the burden on DevOps engineers and system administrators.
+Cost-Effectiveness (Pay-as-you-go): Users only pay for the resources they consume. Servers can be shut down when not in use (e.g., nights, holidays) to save costs. AWS operates at a massive scale, allowing them to offer services at a lower price.
+Elasticity (Physical vs. Cloud): Similar to physical servers, EC2 allows adding or decreasing volumes, RAM size, etc., but with the added convenience and flexibility of a cloud platform.
+3. Types of EC2 Instances
+
+There are multiple types of EC2 instances, categorized based on their optimization for different workloads.
+Current generation types commonly used:
+General Purpose: Suitable for common workloads where a balance of compute, memory, and networking resources is needed (e.g., t2.micro which is free tier eligible).
+Compute Optimized: Offers a higher ratio of compute power (CPU) for compute-intensive applications (e.g., machine learning models, gaming servers).
+Memory Optimized: Provides high memory capacity and performance for memory-intensive workloads (e.g., big data analytics, high-performance computing).
+Storage Optimized: Designed for workloads requiring high sequential read and write access to large datasets.
+Accelerated Compute: Uses hardware accelerators (like GPUs) for specialized workloads.
+The choice of instance type depends on the application's requirements (e.g., ML applications need compute-optimized, data analytics need memory-optimized).
+The steps to create different EC2 instance types are generally the same; only the instance type selection changes. AWS charges accordingly based on the instance type.
+4. Regions and Availability Zones
+
+Regions: AWS has data centers located across the world (e.g., North Virginia, Ohio, Mumbai, Singapore, Sydney, Frankfurt).
+Importance:
+Data Residency: To comply with regulations (e.g., European banks wanting data to stay within Europe).
+Latency: To reduce the time taken for requests to travel between the user and the server, ensuring low latency for a faster application response.
+Availability Zones (AZs): Within each region, AWS has multiple isolated data centers.
+Purpose: To provide high availability and fault tolerance. If one availability zone in a region goes down (due to a short circuit, natural disaster, etc.), applications deployed across multiple AZs will still be accessible, preventing downtime.
+AZs are denoted by alphabets (e.g., us-east-1a, us-east-1b) rather than specific locations.
+5. Practical Demo: Creating an EC2 Instance
+
+Log in to the AWS console.
+Search for "EC2" and navigate to the EC2 dashboard.
+Click on "Instances" and then "Launch instance."
+Steps to Launch:
+Name: Provide a name for the instance (e.g., "my first instance").
+Operating System (AMI): Choose an operating system distribution (e.g., Ubuntu, Amazon Linux, Red Hat). Always select "Free tier eligible" versions.
+Instance Type: Select the desired instance type. For free tier, t2.micro is available (1 CPU, 1GB RAM). Understand free tier limits (750 hours per month for one t2.micro instance). It's good practice to shut down instances when not in use to avoid charges.
+Key Pair: This is crucial for logging into the instance.
+It's a combination of public and private keys.
+AWS disables password authentication by default.
+Create a new key pair (e.g., AWS_login.pem) and download the .pem file. Do not share the private key.
+Network Settings: Leave default for now. These cover security groups, inbound/outbound traffic rules, and VPCs, which will be covered in future lessons.
+Storage: Default is 8GB, which is sufficient for many applications.
+Click "Launch instance."
+Once launched, wait for the instance status to change to "running."
+6. Connecting to the EC2 Instance
+
+Copy the Public IP address of the running instance from the EC2 dashboard.
+Tools for Connection:
+Windows: PuTTY, MobaXterm.
+Mac/Linux: Default terminal.
+SSH Command:
+ssh -i /path/to/your/keypair.pem ubuntu@
+Replace /path/to/your/keypair.pem with the actual path to your downloaded .pem file.
+ubuntu is the default user for Ubuntu AMIs.
+Permission Error: If you encounter a "Permissions for ... are too open" error:
+Change the .pem file permissions using chmod 600 /path/to/your/keypair.pem.
+After successful connection, you will be logged into the EC2 instance (e.g., as ubuntu user).
+Initial Step: Always run sudo apt update (for Ubuntu) to update packages on a new instance.
+7. Deploying Jenkins on EC2
+
+Prerequisite: Install Java (OpenJDK 11 JDK):
+sudo apt install openjdk-11-jdk
+Verify installation: java --version
+Install Jenkins:
+Follow the official Jenkins installation guide for Ubuntu (search "install Jenkins on Ubuntu").
+Copy and paste the commands provided on the Jenkins documentation page.
+Verify Jenkins Service:
+systemctl status jenkins (should show "active (running)").
+8. Accessing the Jenkins Application from Outside
+
+By default, applications on EC2 instances are not accessible from the external world due to security settings.
+Jenkins runs on Port 8080.
+How to Open Port 8080:
+Go to the EC2 instance details in the AWS console.
+Navigate to the "Security" tab.
+Click on the associated Security Group.
+Under "Inbound rules," click "Edit inbound rules."
+Add a new rule:
+Type: Custom TCP
+Port range: 8080
+Source: Anywhere IPv4 (0.0.0.0/0)
+Save the rule.
+Access Jenkins: Open your browser and navigate to [http://:8080.](http://:8080`.)
+The Jenkins login console should now be accessible. The initial password can be found in a specific file on the EC2 instance, as prompted by Jenkins.
