@@ -18,6 +18,8 @@ Day-6(Route53)
 <img width="1094" height="627" alt="image" src="https://github.com/user-attachments/assets/dd568853-426b-4f3b-90f4-da1437998dc2" />
 Day-7(VPC Project)
 <img width="1297" height="639" alt="image" src="https://github.com/user-attachments/assets/5d685d9e-56b6-45ce-b374-75c865123ac2" />
+<img width="970" height="510" alt="image" src="https://github.com/user-attachments/assets/c416246c-afff-41cd-98c4-e9be9333c149" />
+
 
 
 
