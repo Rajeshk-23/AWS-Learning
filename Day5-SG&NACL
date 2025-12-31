@@ -1,0 +1,101 @@
+ Day 5 of the AWS Zero to Hero series, focusing on AWS Security Groups and Network Access Control Lists (NACLs).
+
+Recap of Day 4: VPC (Virtual Private Cloud)
+
+VPC Concept: VPC is a foundational service in AWS that introduces the concept of a private cloud within a public cloud, significantly enhancing security.
+VPC Components: The video discussed various VPC components like Internet Gateway, Load Balancer, and Route Tables.
+Traffic Flow: Explained how traffic flows within a VPC to reach an application, moving through multiple components.
+Importance of VPC: VPC is crucial for security in AWS.
+Security in AWS: Shared Responsibility Model
+
+AWS operates on a shared responsibility model for security.
+AWS's Part: AWS provides tools and infrastructure (like VPC, Security Groups, NACLs, API Gateway) to enable security.
+User's (DevOps Engineer/Admin) Part: Users are responsible for configuring and managing these security tools effectively to secure their applications and data.
+Critical Role of DevOps Engineers: DevOps engineers play a critical role in configuring components like load balancers, API Gateways, Security Groups, and NACLs.
+Security Groups and NACLs: Last Point of Security
+
+Both Security Groups and NACLs act as the last point of security before a user request reaches the application.
+They are critical because if not configured properly, applications can be easily hacked.
+Primary Difference between Security Groups and NACLs
+
+Security Group:
+
+Applied at the instance level (e.g., EC2 instance level).
+Acts as a virtual firewall for your instance.
+Default Behavior: By default, it denies all inbound traffic and allows all outbound traffic (except Port 25 for spam prevention).
+Configuration: Users explicitly define rules to allow specific inbound and outbound traffic.
+Inbound Traffic: Traffic flowing into your application (e.g., a user accessing amazon.com).
+Outbound Traffic: Traffic flowing out of your application (e.g., amazon.com accessing a payment gateway like Razorpay).
+Example: To access a Jenkins application on an EC2 instance, you need to open Port 8080 in the Security Group. Opening unnecessary ports can lead to security vulnerabilities.
+NACL (Network Access Control List):
+
+Stands for Network Access Control List.
+Applied at the subnet level.
+Acts as a firewall for subnets, controlling traffic going in and out of the entire subnet.
+Additional Layer of Security: Provides an additional layer of defense, even if instances within the subnet have misconfigured Security Groups.
+Rule Evaluation: Rules are processed in order of priority (lowest numbered rule first).
+Automation: Can be used for automation, as applying NACL rules to a subnet affects all instances within that subnet, avoiding the need to configure each instance's Security Group individually.
+Deny Rules: NACLs can explicitly deny specific traffic, which overrides Security Group allow rules if the NACL deny rule is met first in the order of evaluation.
+Control: Allows administrators to define organizational network traffic rules, blocking specific ports or IP address ranges.
+Practical Demonstration (Step-by-Step)
+
+Create a Custom VPC:
+
+Navigated to the VPC service in the AWS Management Console.
+Selected "VPC and more" to allow AWS to automatically create associated resources (public and private subnets, route tables, internet gateway, S3 VPC endpoints).
+Provided a name (e.g., "demo VPC") and kept the default CIDR block (/16), which provides 65536 IP addresses.
+Chose one availability zone and one public subnet for the demo.
+Clicked "Create VPC."
+Launch an EC2 Instance within the Custom VPC:
+
+Went to the EC2 service and clicked "Launch instance."
+Named the instance "demo instance," chose Ubuntu flavor, and T2 micro instance type.
+Selected an existing key pair.
+Crucially, in Network settings:
+Edited the network configuration.
+Selected the newly created "demo VPC" instead of the default VPC.
+Changed the subnet to the "public subnet" within the demo VPC.
+Enabled "Auto-assign public IP."
+Allowed AWS to create a new Security Group for the instance.
+Launched the instance.
+Deploy a Python Application on EC2:
+
+SSH'd into the running EC2 instance using its public IP.
+Updated packages using sudo apt update.
+Verified Python 3 installation.
+Ran a simple HTTP server on Port 8000 using python3 -m http.server 8000.
+Test Access (Initial Blockage by Security Group):
+
+Attempted to access the application via [http://:8000.](http://:8000`.)
+The request failed because the default Security Group only allowed SSH (Port 22) traffic.
+Configure Security Group (Allowing Access):
+
+Navigated to the Security Group associated with the EC2 instance.
+Edited inbound rules.
+Added a new rule to allow "Custom TCP" on "Port 8000" from "Anywhere-IPv4 (0.0.0.0/0)".
+Saved the rules.
+Refreshed the application URL, and it successfully loaded, showing the directory listing.
+Configure NACL (Blocking Access):
+
+Navigated to the VPC service, then "Network ACLs."
+Selected the NACL associated with the "demo VPC."
+Edited inbound rules.
+Removed the default "Allow All Traffic" rule.
+Added a new rule with a lower rule number (e.g., 100) to "Deny" "Custom TCP" on "Port 8000" from "Anywhere-IPv4 (0.0.0.0/0)".
+Saved changes.
+Attempted to access the application again; the request was blocked by the NACL, even though the Security Group allowed it. This demonstrated that NACL acts as the first layer of defense.
+NACL Rule Order Demonstration:
+
+Changed the NACL inbound rules to demonstrate rule order:
+Rule 1: Allow all traffic (Rule number 100).
+Rule 2: Deny Port 8000 (Rule number 200).
+Access was still allowed because the "Allow all traffic" rule (100) was processed first.
+Then, the rules were reordered:
+Rule 1: Deny Port 8000 (Rule number 100).
+Rule 2: Allow all traffic (Rule number 200).
+Access was blocked because the "Deny Port 8000" rule (100) was processed first, demonstrating that deny rules can override allow rules if they come earlier in the order of evaluation.
+Conclusion:
+
+NACLs act as the first layer of defense at the subnet level.
+DevOps engineers and network administrators can use NACLs to block specific ports or IP ranges for an entire subnet, overriding Security Group configurations if the NACL rule is processed first.
+The practical exercise serves as an assessment for viewers to practice configuring Security Groups and NACLs.
