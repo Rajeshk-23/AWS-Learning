@@ -13,7 +13,7 @@ Day-5(SG&NACL)
 <img width="1224" height="657" alt="image" src="https://github.com/user-attachments/assets/cd415576-a228-4ca0-9b1e-921224a72330" />
 <img width="1273" height="562" alt="image" src="https://github.com/user-attachments/assets/b0a66755-6508-41a8-9df0-27d07e3fae59" />
 <img width="1285" height="625" alt="image" src="https://github.com/user-attachments/assets/801d5fbf-0e5f-4c84-8fd7-c6aebd92a3b9" />
-Day-c(Route53)
+Day-6(Route53)
 <img width="1079" height="623" alt="image" src="https://github.com/user-attachments/assets/cb43cc44-e0f5-4cf2-b968-437a4c19e489" />
 <img width="1094" height="627" alt="image" src="https://github.com/user-attachments/assets/dd568853-426b-4f3b-90f4-da1437998dc2" />
 
