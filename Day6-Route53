@@ -1,0 +1,32 @@
+What is AWS Route 53?
+
+Route 53 provides DNS (Domain Name System) as a service on AWS.
+Just like EC2 provides compute as a service, and EKS provides Kubernetes as a service, Route 53 offers DNS as a service.
+What is DNS and Why is it Needed?
+
+DNS stands for Domain Name System.
+It's used daily when accessing websites like amazon.com or flipkart.com.
+When applications or load balancers are created on AWS, they are assigned IP addresses.
+However, users don't use IP addresses (e.g., 3.6.10.171) because they are difficult to remember and can change dynamically.
+DNS maps domain names to IP addresses or resolves domain names to IP addresses.
+In real-world scenarios, DNS typically resolves a domain name to a load balancer's IP address.
+How Route 53 Fits into AWS Architecture
+
+When a user tries to access an application via a domain name (e.g., amazon.com), Route 53 intercepts the request.
+Route 53 then checks its DNS records to resolve the domain name to the load balancer's IP address, and from there, the request proceeds to the application.
+Key Components of Route 53:
+
+Domain Registration:
+You can purchase domain names directly from AWS through Route 53.
+Alternatively, you can integrate domain names purchased from other sellers (e.g., GoDaddy) with Route 53.
+Domain registration involves an upfront payment to AWS.
+Hosted Zones:
+Whether you buy the domain from AWS or elsewhere, you need to create hosted zones.
+Hosted zones are where you create and maintain DNS records, which map domain names to IP addresses.
+Route 53 uses these records to resolve DNS names to IP addresses when requests come in.
+Health Checks:
+Route 53 can perform health checks on web applications or servers.
+It can periodically send requests to servers to monitor their active status.
+This allows Route 53 to forward requests only to active and healthy web servers, potentially performing some balancing.
+The video concludes by mentioning that the next session will involve a practical project to implement a public/private subnet architecture using VPC components and Route 53.
+    
