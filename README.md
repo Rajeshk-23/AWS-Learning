@@ -6,6 +6,19 @@ Day-3(EC2)
 <img width="1011" height="634" alt="image" src="https://github.com/user-attachments/assets/7cef97ce-d396-4123-b923-b3fea2541094" />
 Day-4(VPC)
 <img width="1195" height="658" alt="image" src="https://github.com/user-attachments/assets/7d2650ba-0f2a-4dca-9e36-8ff5a769b9c1" />
+Day-5(SG&NACL)
+<img width="1115" height="574" alt="image" src="https://github.com/user-attachments/assets/888dab34-9444-42ea-b97f-f9e354b56a7b" />
+<img width="1090" height="638" alt="image" src="https://github.com/user-attachments/assets/1d3f134f-e83e-4dc5-bace-5a640f8e9805" />
+<img width="1199" height="500" alt="image" src="https://github.com/user-attachments/assets/8d7e846f-f998-4cd6-9c6d-d49e05f209b4" />
+<img width="1224" height="657" alt="image" src="https://github.com/user-attachments/assets/cd415576-a228-4ca0-9b1e-921224a72330" />
+<img width="1273" height="562" alt="image" src="https://github.com/user-attachments/assets/b0a66755-6508-41a8-9df0-27d07e3fae59" />
+<img width="1285" height="625" alt="image" src="https://github.com/user-attachments/assets/801d5fbf-0e5f-4c84-8fd7-c6aebd92a3b9" />
+
+
+
+
+
+
 
 
 
