@@ -28,5 +28,5 @@ Health Checks:
 Route 53 can perform health checks on web applications or servers.
 It can periodically send requests to servers to monitor their active status.
 This allows Route 53 to forward requests only to active and healthy web servers, potentially performing some balancing.
-The video concludes by mentioning that the next session will involve a practical project to implement a public/private subnet architecture using VPC components and Route 53.
+The video concludes by mentioning that the next session will involve a practical project to implement a public/private subnet architecture using VPC components and Route 53.l
     
