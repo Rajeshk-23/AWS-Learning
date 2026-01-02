@@ -1,0 +1,22 @@
+Introduction to AWS S3: S3 stands for Simple Storage Service. It's one of the easiest AWS services to learn and is often a starting point for many AWS journeys due to its simple problem-solving nature: storage.
+Problem S3 Solves: Storage: S3 addresses the common problem of running out of storage, similar to how individuals buy hard drives for their phones or laptops. For organizations, this problem is much larger, dealing with terabytes of data.
+Characteristics of AWS S3:
+Highly Scalable: S3 allows you to store an unlimited amount of data, with individual objects not exceeding 5TB.
+Highly Available and Durable: S3 boasts 11 nines (99.999999999%) of reliability, meaning that out of a billion objects stored over 100 years, only one might be lost. This high durability is achieved by automatically creating multiple copies of your data across different availability zones within a region.
+Security: S3 offers various security features, including encryption at rest and in transit, Access Control Lists (ACLs), bucket policies to restrict access, and logging mechanisms to track object access.
+Cost Efficiency: S3 is a very cost-effective storage solution, with pricing dependent on the chosen storage class.
+Performance: S3 ensures quick access, upload, and download of content. It also supports multi-part uploads for large files, allowing for resilience against interruptions.
+Types of Files Stored in S3: As a DevOps engineer, you'll typically store application log files, large databases and their backups (e.g., 3TB-4TB for large organizations), dashboard Excel sheets, and huge application configuration files. S3 has no general restrictions on file types.
+Global Accessibility: S3 buckets and their contents are globally accessible via HTTP/HTTPS protocols, allowing data stored in one region to be accessed from anywhere in the world.
+S3 Buckets and Objects:
+Buckets: These are the fundamental containers for data in S3. There are no restrictions on the amount or type of data you can store in a bucket.
+Objects: Any file or piece of data uploaded to S3 is considered an object.
+Demonstration 1: Creating an S3 Bucket and Uploading an Object: The video walks through the process of creating a new S3 bucket in the AWS console and uploading an index.html file to it.
+Bucket Naming Conventions: Bucket names must be globally unique, not contain spaces or uppercase letters, and adhere to specific DNS compliance rules.
+Block Public Access Settings: By default, S3 blocks public access to buckets for security reasons. This setting needs to be turned off if you intend to host a public website.
+S3 Versioning: S3 can act as a versioning solution, similar to Git. By enabling bucket versioning, S3 keeps multiple copies of an object every time it's modified and re-uploaded, allowing you to retrieve older versions.
+Storage Classes: S3 offers various storage classes with different cost, access time, and durability characteristics, including S3 Standard, S3 Standard-IA, S3 One Zone-IA, S3 Glacier, and S3 Glacier Deep Archive. The choice of storage class depends on organizational needs, balancing cost and access time.
+Demonstration 2: Controlling Bucket Permissions with Bucket Policies: The video demonstrates how to restrict access to a specific S3 bucket even for IAM users with broad S3 permissions, using a bucket policy. This involves creating an IAM user with full S3 access, attempting to download a file (which succeeds), and then applying a bucket policy to deny access to that specific bucket, preventing the download.
+Demonstration 3: Hosting a Static Website on S3: S3 can host static websites, offering a cheap and globally accessible solution. This involves uploading an index.html file, enabling static website hosting in bucket properties, unblocking public access, and adding a bucket policy to allow s3:GetObject permissions for everyone.
+
+
