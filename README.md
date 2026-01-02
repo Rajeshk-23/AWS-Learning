@@ -21,6 +21,8 @@ Day-7(VPC Project)
 <img width="970" height="510" alt="image" src="https://github.com/user-attachments/assets/c416246c-afff-41cd-98c4-e9be9333c149" />
 Day-9(S3 Bucket)
 <img width="1301" height="621" alt="image" src="https://github.com/user-attachments/assets/494c40da-6921-441c-9ac4-7737336fef4f" />
+<img width="1296" height="651" alt="image" src="https://github.com/user-attachments/assets/80b2c5ba-78a2-4dd9-8170-6857e00b2399" />
+
 
 
 
