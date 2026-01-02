@@ -19,6 +19,9 @@ Day-6(Route53)
 Day-7(VPC Project)
 <img width="1297" height="639" alt="image" src="https://github.com/user-attachments/assets/5d685d9e-56b6-45ce-b374-75c865123ac2" />
 <img width="970" height="510" alt="image" src="https://github.com/user-attachments/assets/c416246c-afff-41cd-98c4-e9be9333c149" />
+Day-9(S3 Bucket)
+<img width="1301" height="621" alt="image" src="https://github.com/user-attachments/assets/494c40da-6921-441c-9ac4-7737336fef4f" />
+
 
 
 
