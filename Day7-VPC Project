@@ -1,0 +1,91 @@
+Project Overview and Architecture
+
+The project demonstrates how to create a production-grade AWS environment to deploy applications securely.
+
+VPC Setup: A Virtual Private Cloud (VPC) is created with public and private subnets across two Availability Zones (AZs).
+Purpose of Two AZs: To ensure high availability and resiliency. If one AZ goes down, the other can continue serving traffic.
+Public Subnets: Contain the Application Load Balancer (ALB) and NAT Gateway.
+Private Subnets: Where application servers (EC2 instances) are deployed, providing enhanced security.
+Traffic Flow:
+Users access applications via the internet gateway to the load balancer.
+The load balancer directs traffic to application instances in the private subnets.
+NAT Gateway: Used by applications in private subnets to access the internet while masking their private IP addresses, enhancing security.
+Auto Scaling Group (ASG): Deploys and manages application instances in the private subnets.
+Functionality: Automatically scales the number of instances up or down based on traffic load, ensuring applications can handle varying demands.
+Deployment: Instances are automatically distributed across multiple AZs.
+Load Balancer: Distributes incoming application traffic across multiple instances.
+Functionality: Balances the load, ensuring no single instance is overloaded. It can also perform path-based or host-based routing.
+Bastion Host (Jump Server): A secure intermediary server placed in the public subnet.
+Functionality: Allows secure SSH access to instances in the private subnets, which do not have public IP addresses. It provides logging and auditing capabilities for access to the private network.
+Implementation Steps
+
+Create a VPC:
+
+Use the "VPC and more" option in the AWS VPC console for easier setup.
+Configure with two public subnets and two private subnets across two Availability Zones.
+Ensure NAT Gateway is enabled per Availability Zone.
+Disable VPC endpoint for S3 bucket if not required for the project.
+Address any Elastic IP address limits by releasing unused ones.
+Create Auto Scaling Group and Launch Template:
+
+Go to the EC2 dashboard and navigate to "Auto Scaling Groups."
+Launch Template: Create a launch template that defines the configuration for the EC2 instances.
+Provide a name and description.
+Select an Amazon Machine Image (AMI) (e.g., Ubuntu).
+Choose an instance type (e.g., t2.micro for free tier).
+Select an existing key pair or create a new one.
+Configure network settings:
+Select the newly created VPC.
+Create a new security group for the instances, allowing SSH (Port 22) from anywhere and the application port (e.g., Port 8000) from anywhere.
+Auto Scaling Group:
+Provide a name for the ASG.
+Select the launch template created earlier.
+Choose the newly created VPC.
+Select the private subnets in both Availability Zones for instance deployment.
+Set desired capacity (e.g., 2 instances), minimum, and maximum capacity.
+Do not attach a load balancer at this stage (it will be done separately).
+Keep scaling policies as "None" for this basic setup.
+Install Application on Instances (via Bastion Host):
+
+Create Bastion Host:
+Launch a new EC2 instance in the public subnet of the newly created VPC.
+Ensure it has a public IP address and an associated key pair.
+Configure its security group to allow SSH access from your local machine.
+Copy Key Pair to Bastion Host:
+Use scp command to securely copy your local SSH key pair (.pem file) to the Bastion Host.
+SSH to Private Instances:
+First, SSH into the Bastion Host using its public IP and your local key pair.
+From the Bastion Host, SSH into the private EC2 instances using their private IP addresses and the copied key pair.
+Deploy Application:
+Install the Python application (or any other application) on one of the private EC2 instances.
+For demonstration of load balancing, intentionally leave the application not installed on the other private instance.
+Example: Create an index.html file and run a Python HTTP server on port 8000.
+Create and Configure Application Load Balancer (ALB):
+
+Go to the EC2 dashboard and navigate to "Load Balancers."
+Create ALB:
+Choose "Application Load Balancer."
+Provide a name (e.g., "AWS prod example").
+Set it as "Internet-facing."
+Select the newly created VPC.
+Select the public subnets in both Availability Zones.
+Choose or create a security group for the ALB that allows HTTP (Port 80) traffic from anywhere.
+Create Target Group:
+Under the Load Balancers section, go to "Target Groups" and click "Create target group."
+Select "Instances."
+Provide a name (e.g., "AWS prod example").
+Set the protocol to HTTP and the port to the application's port (e.g., 8000).
+Select the newly created VPC.
+Register the private EC2 instances (created by the ASG) as targets.
+Ensure health checks are configured (e.g., HTTP health check on port 8000).
+Attach Target Group to ALB:
+When creating the ALB, ensure the listener (e.g., HTTP:80) is configured to forward traffic to the newly created target group.
+Test the Application:
+
+Access the ALB's DNS name (provided in the Load Balancer details) from your web browser.
+The application should be accessible.
+If the page doesn't load, check the ALB's security group to ensure Port 80 is open to the internet.
+Due to default health checks, the ALB will primarily route traffic to healthy instances (the one where the application was installed).
+Assignment: To observe explicit load balancing, install a slightly different version of the application on the second private instance (e.g., "My second AWS project"). Then, repeated access to the ALB DNS should show responses alternating between the two instances, demonstrating load balancing when both are healthy.
+
+
