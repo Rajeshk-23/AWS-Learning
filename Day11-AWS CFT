@@ -1,0 +1,72 @@
+Introduction to AWS CloudFormation Templates (CFT)
+
+AWS CFTs are used to create infrastructure on AWS.
+They implement the principles of Infrastructure as Code (IaC).
+IaC means writing code to create infrastructure, moving beyond just writing code for applications.
+CFT vs. AWS CLI
+
+Infrastructure as Code (IaC): CFT implements IaC, while AWS CLI generally does not.
+IaC principles state that a tool should act as a middleman between the user and cloud provider(s).
+Users submit templates (YAML or JSON) that are declarative and versioned.
+The IaC tool converts these templates into API calls that the cloud provider understands.
+Declarative Nature:
+"What you see is what you have" – the template should directly reflect the infrastructure deployed on AWS.
+Makes code review and auditing easier.
+Versioned Nature:
+Templates can be stored in Git repositories, S3 buckets, or other locations.
+Allows tracking changes over time (e.g., changes made 10 or 5 days ago).
+When to use CLI vs. CFT:
+AWS CLI: Preferred for short, quick actions, simple scripts, or getting details about AWS resources (e.g., listing S3 buckets). It's faster for immediate commands.
+AWS CFT: Preferred for creating actual resources, especially when creating multiple resources or huge "stacks" of infrastructure.
+Characteristics and Features of CFT
+
+Supported Formats: CFT supports both JSON and YAML.
+YAML (Recommended):
+Widely used in DevOps (Kubernetes, Ansible).
+Supports commenting, which is crucial for team collaboration and understanding code.
+More readable due to indentation-based structure (similar to Python).
+Less complex than JSON.
+JSON:
+Does not support commenting.
+Readability can be harder due to reliance on curly braces and brackets.
+Drift Detection:
+A significant feature of CFT.
+Allows detecting when infrastructure created by CFT has been manually modified or deleted outside of the template (e.g., via AWS UI or CLI).
+Helps maintain consistency between the template and the actual deployed infrastructure.
+Users can initiate drift detection periodically (e.g., via Cron jobs) to identify unexpected changes.
+Provides details on what exactly has drifted (e.g., a setting changed from 'enabled' to 'suspended').
+Working with CFT: Stacks
+
+Stacks: In AWS CFT, templates are submitted to "stacks."
+Users upload their YAML/JSON template file to the CFT service (via CLI or UI).
+The stack then processes the template to create or update the specified AWS resources.
+Components of a CFT Template (YAML/JSON Structure)
+
+AWSTemplateFormatVersion: Standard, cannot be changed.
+Description: Explains what the CFT does.
+Metadata: Information like owner, additional details.
+Parameters: Used to pass variables to the CFT during runtime (e.g., instance type, bucket name).
+Rules: For validating parameters submitted by the user (e.g., ensuring naming conventions, restricting instance types).
+Mappings: Assigns parameters to variables.
+Conditions: Define conditions under which certain resources or properties are created.
+Resources (Mandatory): This is the only mandatory section of a CFT template.
+Defines the AWS resources to be created (e.g., EC2 instances, S3 buckets).
+Each resource has a logical ID (e.g., MyS3Bucket) and a Type (e.g., AWS::S3::Bucket) that CloudFormation understands.
+Properties define the configuration for each resource (e.g., BucketName, VersioningConfiguration).
+Outputs: Defines specific outputs from the stack creation (e.g., public IP of an EC2 instance, ARN of an S3 bucket).
+Practical Demonstration (Creating an S3 Bucket with CFT)
+
+AWS CFT Documentation: Highly recommended resource for examples and detailed syntax for various AWS services.
+CloudFormation Designer: A visual tool for beginners to drag and drop resources and automatically generate basic CFT code (in JSON or YAML).
+Steps to create a stack:
+Navigate to the CloudFormation service in the AWS console.
+Click "Create stack."
+Select "Upload a template file" and choose your YAML/JSON file.
+Provide a stack name.
+Review and confirm to submit.
+The stack enters CREATE_IN_PROGRESS and then CREATE_COMPLETE once resources are provisioned.
+Drift Detection in Action:
+After creating an S3 bucket with versioning enabled via CFT, manually disable versioning from the S3 console.
+In the CloudFormation stack, initiate "Detect stack drift."
+CloudFormation identifies the "drifted" status and, upon viewing drift details, shows that the VersioningConfiguration status changed from Enabled to Suspended.
+This highlights the importance of drift detection for managing large-scale infrastructure and identifying unauthorized or unintentional changes.
