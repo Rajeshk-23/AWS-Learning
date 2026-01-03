@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: EC2, S3 (encrypted), and VPC using CloudFormation
+
+Resources:
+
+  rkVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: rk-vpc
+
+  rkInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-003d3d03cfe1b0468
+      InstanceType: t2.micro
+      KeyName: cicd
+      SecurityGroupIds:
+        - sg-053b9dadac70fcafe
+      Tags:
+        - Key: Name
+          Value: rk123
+
+  rkBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-bucket-${AWS::AccountId}
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: aws:kms
+              KMSMasterKeyID: alias/aws/s3
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      Tags:
+        - Key: Name
+          Value: rk-secure-bucket
+
+  rkBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref rkBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: RequireTLS
+            Effect: Deny
+            Principal: "*"
+            Action: "s3:*"
+            Resource:
+              - !GetAtt rkBucket.Arn
+              - !Sub ${rkBucket.Arn}/*
+            Condition:
+              Bool:
+                aws:SecureTransport: false
