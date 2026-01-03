@@ -1,0 +1,39 @@
+Introduces CI/CD on AWS and focuses on AWS CodeCommit as the first of four AWS managed services for implementing CI/CD.
+
+Here's a breakdown of the information presented:
+
+CI/CD on AWS Overview
+
+The video is the first in a four-part series on implementing CI/CD using AWS managed services, rather than open-source tools like Jenkins.
+The four AWS services for CI/CD are: AWS CodeCommit, AWS CodePipeline, AWS CodeBuild, and AWS CodeDeploy.
+The typical CI/CD workflow is explained using Jenkins as an example, with each step (code hosting, orchestration, build, deployment) correlated with its AWS equivalent.
+Code Hosting: GitHub (or GitLab) → AWS CodeCommit
+Orchestration/Pipeline: Jenkins → AWS CodePipeline
+Build Process: Docker/Maven/SonarQube → AWS CodeBuild
+Deployment: Argo CD/Shell Script/Ansible → AWS CodeDeploy
+AWS CodeCommit Explained
+
+What it is: AWS CodeCommit is a managed AWS service that functions as a private Git repository, similar to GitHub or GitLab.
+Why AWS created it: Organizations often use private Git solutions (e.g., self-hosted GitLab, GitHub Enterprise) instead of public repositories. AWS CodeCommit provides a managed alternative to these self-hosted solutions, eliminating the need for organizations to manage their own Git servers, including scaling, patching, and security.
+Advantages:
+Managed Service: AWS handles the infrastructure and maintenance.
+Scalability: Easily scales to accommodate a growing number of repositories and developers.
+Reliability: Backed by AWS's service level agreements (SLAs).
+Disadvantages (Crucial for understanding its limited adoption):
+Limited Features: CodeCommit has significantly fewer features compared to popular platforms like GitHub or GitLab, which offer advanced collaborations, integrations, and tools (e.g., GitHub Copilot, online VS Code editing).
+AWS Restriction: Integrations are primarily limited to other AWS services, making it less flexible for third-party toolchains.
+Less Used: Due to its limited features and integrations, AWS CodeCommit is less commonly used by organizations, even those fully on AWS, who often prefer GitHub, GitLab, or Bitbucket for their rich feature sets.
+User Interface: The UI is considered not as user-friendly as other platforms.
+Practical Demonstration (High-Level Steps):
+
+Accessing CodeCommit service in AWS console.
+Creating a new repository (e.g., "demo-repo-CC").
+Understanding that CodeCommit repositories are always private.
+Uploading files directly via the UI (limited to one file at a time).
+Importance of IAM Users: Root accounts are not recommended for CodeCommit due to security and access restrictions (especially for SSH). An IAM user with CodeCommitPowerUser permissions should be created for practical use.
+Command-Line Access:
+Install Git on your local machine.
+Use git clone to clone the repository (requires IAM user credentials).
+Set Git config user name and email.
+Perform standard Git operations: git add, git commit, git push to upload multiple files or make extensive edits.
+Future Videos: The presenter states that for subsequent videos on CodePipeline, CodeBuild, and CodeDeploy, they will use GitHub instead of CodeCommit to provide more relevant and valuable knowledge for interview purposes, as GitHub/GitLab are more widely adopted in the industry.
