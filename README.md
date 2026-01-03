@@ -26,6 +26,8 @@ Day-9(S3 Bucket)
 Day-10(AWS CLI)
 <img width="995" height="565" alt="image" src="https://github.com/user-attachments/assets/ca1f0cd0-73a9-4695-a77c-74c720dc022e" />
 <img width="935" height="591" alt="image" src="https://github.com/user-attachments/assets/7bcc2d56-db7b-40e4-81c3-40600dc5d784" />
+<img width="1106" height="669" alt="image" src="https://github.com/user-attachments/assets/d4f654c1-4a93-41de-a951-91abadb00457" />
+
 
 
 
