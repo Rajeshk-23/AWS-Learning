@@ -32,6 +32,9 @@ Day-12(Codecommit)
 <img width="1087" height="643" alt="image" src="https://github.com/user-attachments/assets/a0a5bb9a-81a5-46ce-ba60-e28c46fbee92" />
 Day-13(AWS CICD)
 <img width="994" height="537" alt="image" src="https://github.com/user-attachments/assets/03ead888-0670-4cb9-a8db-945dc0641d61" />
+Day-14(CI Integration)
+<img width="1299" height="673" alt="image" src="https://github.com/user-attachments/assets/c66810d3-85b9-44e9-a1c0-25cd585600a0" />
+
 
 
 
