@@ -1,0 +1,56 @@
+AWS Zero to Hero Series - Day 13: AWS Code Pipeline
+
+The topic for today is AWS Code Pipeline, part of the AWS CI/CD services.
+The four major AWS services for CI/CD are: AWS Code Commit, AWS Code Pipeline, AWS Code Build, and AWS Code Deploy. These will be covered in four separate videos with a full demonstration later.
+Today's video compares AWS Code Pipeline with Jenkins, a popular open-source CI platform, to help viewers correlate the concepts.
+A demonstration of using all AWS services for an end-to-end CI/CD pipeline will be done in future videos.
+CI/CD Workflow with Jenkins (Open Source):
+
+Jenkins is an open-source platform widely used for CI/CD.
+Workflow:
+A developer makes a code commit to a source code repository (e.g., GitHub, Bitbucket, GitLab).
+A webhook from the repository (e.g., GitHub webhook) triggers a Jenkins pipeline.
+The Jenkins pipeline (written in Groovy scripting, declarative or scripted) implements continuous integration (CI) and invokes continuous delivery (CD).
+Continuous Integration (CI) Stages:
+Code checkout
+Build and unit tests (stages vary by organization)
+Static code analysis (SAST, DAST using tools like SonarQube)
+Docker image creation
+Docker image scanning
+Docker image push
+Continuous Delivery (CD) Invocation: After CI, Jenkins can invoke the CD process.
+Older methods: Ansible, shell scripts.
+Recommended method: GitOps platforms like Argo CD, Flux CD, or Spinnaker for deploying to Kubernetes clusters. GitOps ensures constant reconciliation and single source of truth.
+Jenkins acts as an orchestrator for CI, and facilitates or invokes CD.
+CI/CD Workflow with AWS Code Pipeline (AWS Managed):
+
+The goal is to move the entire CI/CD ecosystem to AWS managed services.
+Workflow:
+A user makes a code change to AWS Code Commit (AWS's managed Version Control System, comparable to GitHub/GitLab).
+AWS Code Commit triggers an AWS Code Pipeline.
+AWS Code Pipeline acts as the orchestrator, similar to Jenkins.
+AWS Code Pipeline invokes Continuous Integration using AWS Code Build.
+Code Build is responsible for all the CI stages (build, test, image creation, etc.). While scripts can be used, Code Build is the common approach.
+AWS Code Pipeline invokes Continuous Delivery using AWS Code Deploy.
+Code Deploy handles the CD part, deploying to target platforms like Kubernetes, EC2 instances, or ECS.
+Comparison: Jenkins vs. AWS Code Pipeline (Open Source vs. AWS Managed):
+
+Why AWS Code Pipeline is used (despite being chargeable):
+Managed Service: AWS handles all management, scaling, security patches, health checks, and resource allocation.
+Reduced Management Overhead: Companies, especially startups or small companies, don't need dedicated DevOps engineers to manage CI/CD infrastructure (like Jenkins masters and worker nodes/slaves).
+Pay-as-you-go: Users only pay for what they use.
+Why Jenkins is often preferred (despite management overhead):
+Open Source & Free: The open-source version is free, reducing cost.
+Management Efficiency: Efficient DevOps engineers can manage Jenkins effectively, especially with Docker agents that spin up and down with pipeline runs, optimizing infrastructure.
+AWS Tools for Jenkins Management: Jenkins can be deployed on AWS EC2 instances with Auto Scaling Groups, CloudWatch, and alarms, allowing AWS to manage the underlying infrastructure for Jenkins.
+Platform Agnostic: This is a major advantage. Jenkins pipelines are not restricted to AWS. If an organization moves to Azure, Google Cloud, or on-premises, Jenkins pipelines can be easily migrated and reused.
+Vendor Lock-in: AWS Code Pipeline creates vendor lock-in; pipelines written for AWS Code Pipeline will only work within AWS.
+Features & Integrations: Jenkins generally offers more features and can integrate with a wider range of tools compared to AWS Code Pipeline.
+Conclusion:
+
+Jenkins is popular due to its features, integrations, and platform independence.
+AWS Code Pipeline is chosen when organizations want everything fully managed by AWS and cost is not a barrier.
+Learning AWS managed CI/CD services like Code Pipeline is still valuable, as some organizations operate entirely within the AWS ecosystem.
+The next video will demonstrate continuous integration using GitHub, AWS Code Pipeline, and AWS Code Build. The video after that will complete the end-to-end CI/CD.
+
+
