@@ -84,5 +84,8 @@ The video shows a deployment failing initially because the appspec.yaml was not 
 This comprehensive setup allows CodeDeploy to fetch your application code, execute defined scripts, and deploy your application onto the specified EC2 instances.
 ![alt text](image.png)
 <img width="1308" height="647" alt="image" src="https://github.com/user-attachments/assets/d665d57c-07af-4a9c-859a-cf6af91e0a22" />
+<img width="1301" height="673" alt="image" src="https://github.com/user-attachments/assets/0d70f8ea-1e93-4e29-96ad-be7be4c2ca70" />
+
+
 
 
