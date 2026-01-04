@@ -83,3 +83,6 @@ Agent communication issues: Ensure the CodeDeploy agent is running and has the c
 The video shows a deployment failing initially because the appspec.yaml was not at the root. After correcting this (by creating and committing the appspec.yaml and the scripts folder with startcontainer.sh and stopcontainer.sh at the repository root), the deployment can be retried or a new one created.
 This comprehensive setup allows CodeDeploy to fetch your application code, execute defined scripts, and deploy your application onto the specified EC2 instances.
 ![alt text](image.png)
+<img width="1308" height="647" alt="image" src="https://github.com/user-attachments/assets/d665d57c-07af-4a9c-859a-cf6af91e0a22" />
+
+
