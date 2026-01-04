@@ -1,0 +1,105 @@
+Day 14: AWS End-to-End CI Realtime Project Demo
+
+This video is a practical, step-by-step tutorial on implementing a Continuous Integration (CI) pipeline on AWS using managed services.
+
+Key AWS Services Used:
+
+AWS CodePipeline (for orchestration)
+AWS CodeBuild (for the build process)
+GitHub (as the source code repository, instead of CodeCommit, due to its widespread use and additional configuration needs)
+AWS Systems Manager Parameter Store (for securely storing sensitive information like Docker credentials)
+IAM Roles (for granting permissions to AWS services)
+Project Setup (GitHub Repository):
+
+A GitHub repository named AWS devops Zero to Hero is used.
+The code for this demo is in the day-14 folder.
+Simple Python Application: A basic Flask-based "hello world" application.
+requirements.txt: Lists flask as the only requirement.
+Dockerfile: A basic Dockerfile to build a Python-based Docker image for the Flask application. It sets up a workspace, copies requirements, installs them, copies source code, exposes a port, and starts the Flask app.
+buildspec.yaml: This file defines the build specifications for AWS CodeBuild. It is initially blank and is written step-by-step in the video.
+AWS CodeBuild Setup:
+
+Create Build Project:
+
+Provide a project name (e.g., sample-python-project).
+Add an optional description (e.g., sample-python-flask-service).
+No need to restrict concurrent builds for this demo.
+Source Provider Configuration:
+
+Select GitHub.
+Choose between "Public repository" or "Repository in your GitHub account."
+Provide the GitHub repository URL ([https://github.com/iam-veeramalla/aws-devops-zero-to-hero.](https://github.com/iam-veeramalla/aws-devops-zero-to-hero`.)
+Connect to GitHub using OAuth. If not already connected, a pop-up will appear to authorize the connection.
+Environment Configuration:
+
+CodeBuild uses managed images for its build environment (similar to Jenkins worker nodes).
+Choose Ubuntu as the operating system.
+Select Standard runtime.
+Choose the latest image.
+The environment type will be Linux.
+Service Role (IAM Role) for CodeBuild:
+
+CodeBuild, being an AWS service, needs an IAM role to perform actions on your behalf.
+If a new service role is needed, create it via the IAM console:
+Go to IAM > Roles > Create role.
+Select "AWS service" and choose "CodeBuild" as the service.
+Proceed to create the role, and attach necessary policies later.
+The video uses an existing role and later demonstrates how to attach additional permissions.
+Build Specifications (buildspec.yaml):
+
+This file defines the steps for the CI process (similar to GitHub Actions or Jenkins pipelines).
+It uses YAML syntax. CodeBuild provides commented-out examples.
+Phases:
+install:
+Specify runtime: python 3.11.
+Commands: pip install -r day-14/simple-python-app/requirements.txt (This installs Flask on the build image).
+build:
+Change directory to the application folder: cd day-14/simple-python-app.
+Echo statement: echo "Building Docker image".
+Docker Login: Crucial for pushing images to Docker Hub. Uses sensitive credentials from Parameter Store.
+echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
+Docker Build: docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest" . (The . at the end is vital for specifying the Dockerfile context).
+Docker Push: docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest"
+Securely Storing Credentials (AWS Systems Manager Parameter Store):
+
+Sensitive information like Docker username and password should not be hardcoded in buildspec.yaml.
+Use AWS Systems Manager Parameter Store.
+Create Parameters:
+Go to Systems Manager > Parameter Store.
+Create new parameters with names like /my-app/docker-credentials/username, /my-app/docker-credentials/password, and /my-app/docker-registry-url.
+Choose Secure String for credentials.
+Provide the actual values.
+Retrieve Parameters in buildspec.yaml:
+In the buildspec.yaml environment section, under parameter-store, define variables that map to your Parameter Store paths.
+
+Example:
+yaml
+variables:
+DOCKER_REGISTRY_USERNAME: "/my-app/docker-credentials/username"
+DOCKER_REGISTRY_PASSWORD: "/my-app/docker-credentials/password"
+DOCKER_REGISTRY_URL: "/my-app/docker-registry-url"
+
+These variables can then be used in the build commands.
+
+Troubleshooting Common Errors:
+
+"No such file or directory requirements.txt": Check the exact path to requirements.txt in your install commands and ensure it matches the repository structure.
+"Cannot connect to the Docker daemon": AWS CodeBuild environments do not allow Docker image creation by default. Enable Privileged mode in the CodeBuild project's environment settings.
+"Requested access to the resource is denied" / Docker Push Failures: Ensure you have a docker login command in your build phase before docker push. Also, confirm that the IAM role used by CodeBuild has permissions to access Systems Manager (SSM) parameters.
+Integrating with AWS CodePipeline:
+
+CodePipeline acts as an orchestrator, automating the build process whenever code changes are detected.
+Create Pipeline:
+Provide a pipeline name (e.g., sample-python-app-pipeline).
+Select a service role (CodePipeline can also create a new one).
+Source Stage:
+Choose GitHub (Version 2) as the source provider.
+Create a new GitHub connection (if not already done) and authorize it.
+Select your repository and branch.
+Build Stage:
+Select AWS CodeBuild as the build provider.
+Choose the CodeBuild project you created (e.g., sample-python-project).
+This setup ensures that any code changes pushed to the GitHub repository will automatically trigger the CodePipeline, which will then invoke CodeBuild to build and push the Docker image.
+
+
+
