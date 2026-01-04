@@ -30,6 +30,9 @@ Day-10(AWS CLI)
 Day-12(Codecommit)
 <img width="1300" height="693" alt="image" src="https://github.com/user-attachments/assets/311126df-c302-48a1-a978-65ba87d1ff3f" />
 <img width="1087" height="643" alt="image" src="https://github.com/user-attachments/assets/a0a5bb9a-81a5-46ce-ba60-e28c46fbee92" />
+Day-13(AWS CICD)
+<img width="994" height="537" alt="image" src="https://github.com/user-attachments/assets/03ead888-0670-4cb9-a8db-945dc0641d61" />
+
 
 
 
