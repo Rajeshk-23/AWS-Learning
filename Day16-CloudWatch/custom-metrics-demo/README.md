@@ -1,4 +1,4 @@
-Introduction to CloudWatch
+**Introduction to CloudWatch**
 
 CloudWatch is a core AWS service for monitoring resources and applications.
 It acts as a "gatekeeper" or "watchman" for your AWS cloud, observing activities.
@@ -51,4 +51,6 @@ Create a new SNS topic and provide an email address for notifications.
 Give the alarm a name and a descriptive message (e.g., "Priority: EC2 Instance CPU reached 50%").
 <img width="1298" height="660" alt="image" src="https://github.com/user-attachments/assets/74321ad4-4acc-4311-a155-471837894c8c" />
 <img width="1294" height="653" alt="image" src="https://github.com/user-attachments/assets/bae36881-b0b5-485d-956b-edb3131f9946" />
+<img width="1297" height="674" alt="image" src="https://github.com/user-attachments/assets/885fbbb7-420a-478e-b49d-4a3495cf69f9" />
+
 
