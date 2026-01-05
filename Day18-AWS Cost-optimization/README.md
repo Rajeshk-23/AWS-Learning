@@ -57,4 +57,8 @@ Automate (Optional): Set up a CloudWatch Event rule to trigger the Lambda functi
 Important Note on Cost: Be mindful that creating AWS resources (EC2 instances, EBS volumes, snapshots) will incur costs. Always remember to delete all created resources after your demonstration to avoid unexpected charges.
 
 ###### Conclusion
+
 This project serves as a practical example of how DevOps engineers can implement proactive cost optimization strategies on AWS. By automating the cleanup of stale resources like EBS snapshots, organizations can significantly reduce their cloud expenditure and maintain an efficient cloud environment. The principles demonstrated here can be extended to optimize costs for other AWS services such as S3, RDS, EKS, and more. This is a fundamental skill for any cloud and DevOps professional.
+
+**Demonstration of Cost-Optimization**
+<img width="1299" height="656" alt="image" src="https://github.com/user-attachments/assets/53a4d06f-c91e-4231-b88a-01c64147adfe" />
