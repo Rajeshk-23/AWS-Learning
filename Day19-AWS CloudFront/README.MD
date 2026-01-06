@@ -32,8 +32,10 @@ Scroll down to Static website hosting and click Edit.
 Enable it and choose Host a static website.
 Specify your Index document (e.g., index.html) and optionally an Error document (e.g., error.html).
 Save changes.
+
 Step 2: Upload Website Content to S3
 Upload your static website files (e.g., index.html, CSS files, images) to the S3 bucket.
+
 Step 3: Create a CloudFront Distribution
 Search for CloudFront: Go to the AWS console and search for "CloudFront."
 Create Distribution: Click on "Create distribution."
@@ -52,15 +54,20 @@ Alternate Domain Names (CNAMEs) (Optional): If you are using a custom domain (e.
 SSL Certificate (Optional): If using a custom domain, you'll need an SSL certificate.
 Default Root Object: Specify your default root object (e.g., index.html). This is the file that CloudFront will serve when users navigate to the root of your domain.
 Create Distribution: Click "Create distribution."
+
 Step 4: Access Your Website via CloudFront
 Once the CloudFront distribution is deployed (which can take a few minutes), you will get a Distribution Domain Name (e.g., d12345abcdef.cloudfront.net).
 Copy this URL and open it in your browser. Your static website should now be accessible through CloudFront.
 Important: If you try to access the S3 bucket's direct URL, you will still get an "Access Denied" (403 Forbidden) error, as direct public access to the S3 bucket is blocked, ensuring security.
+
 Step 5: Clean Up Resources
 Delete CloudFront Distribution: After your demonstration or usage, remember to disable and then delete the CloudFront distribution to avoid incurring charges.
 Delete S3 Bucket: Similarly, delete the S3 bucket if it's no longer needed.
 Important Considerations
 Pricing: Be aware that CloudFront has associated costs based on data transfer out and requests. For production use cases with high traffic, the cost benefits of reduced origin load often outweigh the CloudFront service costs. For personal learning, always delete resources after use to avoid unexpected charges.
 Hands-On Learning: It is highly recommended to perform these steps yourself to solidify your understanding of CloudFront and S3 integration.
+
+
+
 
 
