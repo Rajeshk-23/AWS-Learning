@@ -67,6 +67,12 @@ Important Considerations
 Pricing: Be aware that CloudFront has associated costs based on data transfer out and requests. For production use cases with high traffic, the cost benefits of reduced origin load often outweigh the CloudFront service costs. For personal learning, always delete resources after use to avoid unexpected charges.
 Hands-On Learning: It is highly recommended to perform these steps yourself to solidify your understanding of CloudFront and S3 integration.
 
+![alt text](image.png) 
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
 
 
 
