@@ -1,3 +1,5 @@
+#Dockerfile
+
 # Use the official Python image as the base image
 FROM python:3.9
 
@@ -17,4 +19,5 @@ COPY app.py .
 EXPOSE 3000
 
 # Command to run the Flask application when the container starts
+
 CMD ["python", "app.py"]
