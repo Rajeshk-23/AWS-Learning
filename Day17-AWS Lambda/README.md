@@ -1,3 +1,4 @@
+
 **AWS Lambda Introduction for DevOps Engineers**
 This README summarizes the key concepts and practical applications of AWS Lambda for DevOps engineers.
 
@@ -34,4 +35,5 @@ Understand the Lambda Handler: This is the entry point function that AWS Lambda 
 Add Triggers: Lambda functions are primarily event-driven. Triggers can be configured from services like CloudWatch (for scheduled events or API events) or S3 (for object creation events).
 Configure Permissions: Lambda functions need an IAM role to access other AWS services (e.g., SNS, S3). AWS automatically creates a default role, which can be modified or replaced with an existing custom role.
 Environment Variables: You can use environment variables to pass configuration values to your Lambda function, avoiding code modifications.
+
 Function URL Usage: The enabled Function URL can be used to access the application from outside.
