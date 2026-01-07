@@ -1,5 +1,6 @@
 
 **AWS Lambda Introduction for DevOps Engineers**
+
 This README summarizes the key concepts and practical applications of AWS Lambda for DevOps engineers.
 
 **Introduction to AWS Lambda**
@@ -37,3 +38,4 @@ Configure Permissions: Lambda functions need an IAM role to access other AWS ser
 Environment Variables: You can use environment variables to pass configuration values to your Lambda function, avoiding code modifications.
 
 Function URL Usage: The enabled Function URL can be used to access the application from outside.
+
