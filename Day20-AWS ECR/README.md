@@ -1,4 +1,6 @@
+
 # Introduction to ECR: Explain what ECR is and its core purpose.
+
 Breakdown of ECR (Elastic Container Registry): Explain what "Elastic," "Container," and "Registry" mean in this context.
 ECR vs. Docker Hub: Detail the differences, pros, and cons of each, focusing on the video's emphasis on private repositories and AWS integration for ECR.
 How to Use AWS ECR: Outline the practical steps for creating a repository, building, tagging, and pushing a Docker image to ECR, along with notes on AWS CLI and IAM permissions.
@@ -79,6 +81,7 @@ Conclusion
 AWS ECR is an essential service for managing container images within the AWS ecosystem, offering robust security, scalability, and deep integration with other AWS services. It is the recommended choice for organizations looking to secure and streamline their container image workflows in the cloud.
 
 ![alt text](image.png)
+
 
 
 
