@@ -1,3 +1,5 @@
+#StopContainer
+
 #!/bin/bash
 set -e
 
