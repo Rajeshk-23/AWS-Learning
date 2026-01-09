@@ -1,4 +1,6 @@
 **AWS CloudFront: Content Delivery Network (CDN) with S3 Integration**
+
+
 This README provides an overview of AWS CloudFront, a managed AWS service that offers Content Delivery Network (CDN) solutions. It also details the process of integrating CloudFront with an S3 bucket for hosting static websites, highlighting the benefits and practical implementation steps.
 
 # What is CloudFront?
@@ -67,11 +69,15 @@ Important Considerations
 Pricing: Be aware that CloudFront has associated costs based on data transfer out and requests. For production use cases with high traffic, the cost benefits of reduced origin load often outweigh the CloudFront service costs. For personal learning, always delete resources after use to avoid unexpected charges.
 Hands-On Learning: It is highly recommended to perform these steps yourself to solidify your understanding of CloudFront and S3 integration.
 
+
 ![alt text](image.png) 
+
 
 ![alt text](image-1.png)
 
+
 ![alt text](image-2.png)
+
 
 
 
