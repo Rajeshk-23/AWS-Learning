@@ -64,5 +64,8 @@ This project serves as a practical example of how DevOps engineers can implement
 **Demonstration of Cost-Optimization**
 
 
+
+
 <img width="1299" height="656" alt="image" src="https://github.com/user-attachments/assets/53a4d06f-c91e-4231-b88a-01c64147adfe" />
+
 
