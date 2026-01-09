@@ -25,7 +25,9 @@ Jenkins acts as an orchestrator for CI, and facilitates or invokes CD.
 CI/CD Workflow with AWS Code Pipeline (AWS Managed):
 
 The goal is to move the entire CI/CD ecosystem to AWS managed services.
+
 Workflow:
+
 A user makes a code change to AWS Code Commit (AWS's managed Version Control System, comparable to GitHub/GitLab).
 AWS Code Commit triggers an AWS Code Pipeline.
 AWS Code Pipeline acts as the orchestrator, similar to Jenkins.
@@ -46,6 +48,7 @@ AWS Tools for Jenkins Management: Jenkins can be deployed on AWS EC2 instances w
 Platform Agnostic: This is a major advantage. Jenkins pipelines are not restricted to AWS. If an organization moves to Azure, Google Cloud, or on-premises, Jenkins pipelines can be easily migrated and reused.
 Vendor Lock-in: AWS Code Pipeline creates vendor lock-in; pipelines written for AWS Code Pipeline will only work within AWS.
 Features & Integrations: Jenkins generally offers more features and can integrate with a wider range of tools compared to AWS Code Pipeline.
+
 Conclusion:
 
 Jenkins is popular due to its features, integrations, and platform independence.
