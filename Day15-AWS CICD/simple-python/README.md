@@ -1,9 +1,11 @@
 Here's a step-by-step process of the setup:
 
-Introduction to CI/CD on AWS:
+**Introduction to CI/CD on AWS:**
+
 
 The video builds upon a previous session where the CI (Continuous Integration) part using AWS CodeBuild and CodePipeline was covered.
 Today's focus is the CD (Continuous Delivery) part using AWS CodeDeploy to deploy a Python Flask application on an EC2 instance.
+
 Creating an AWS CodeDeploy Application:
 
 Navigate to the AWS CodeDeploy service in the AWS console.
@@ -66,7 +68,7 @@ hooks: Defines scripts to run at various stages (e.g., ApplicationStop, Applicat
 For this Python Flask application, two shell scripts are created:
 stopcontainer.sh: (Placed in a scripts folder) Used to stop any running application containers.
 startcontainer.sh: (Placed in a scripts folder) Used to pull the Docker image from Docker Hub and run it, exposing the application on a specified port (e.g., 5000, as defined in the Dockerfile).
-These scripts are referenced within the appspec.yaml hooks.
+These scripts are referenced within the appspec.yaml hooks.2  2 b2 1
 Initiating a Deployment (and Troubleshooting):
 
 Go to the CodeDeploy application and select the "Deployments" tab.
@@ -82,9 +84,19 @@ Deployment failure due to missing appspec.yaml: If appspec.yaml is not at the ro
 Agent communication issues: Ensure the CodeDeploy agent is running and has the correct IAM permissions. Restarting the agent after IAM role changes is crucial.
 The video shows a deployment failing initially because the appspec.yaml was not at the root. After correcting this (by creating and committing the appspec.yaml and the scripts folder with startcontainer.sh and stopcontainer.sh at the repository root), the deployment can be retried or a new one created.
 This comprehensive setup allows CodeDeploy to fetch your application code, execute defined scripts, and deploy your application onto the specified EC2 instances.
+
+
 ![alt text](image.png)
+
+
 <img width="1308" height="647" alt="image" src="https://github.com/user-attachments/assets/d665d57c-07af-4a9c-859a-cf6af91e0a22" />
+
+
+
+
 <img width="1301" height="673" alt="image" src="https://github.com/user-attachments/assets/0d70f8ea-1e93-4e29-96ad-be7be4c2ca70" />
+
+
 
 
 
