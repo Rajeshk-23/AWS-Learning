@@ -1,4 +1,5 @@
 **AWS Cost Optimization Project: Event-Driven Serverless with Lambda**
+
 # Introduction
 This project demonstrates how DevOps and Cloud Engineers can implement cloud cost optimization in real-time organizational settings using AWS Lambda functions and an event-driven serverless architecture. Cost optimization is a crucial aspect of cloud management, often overlooked after migrating to the cloud. This project focuses on identifying and cleaning up "stale" AWS resources to prevent unnecessary costs.
 
@@ -61,4 +62,7 @@ Important Note on Cost: Be mindful that creating AWS resources (EC2 instances, E
 This project serves as a practical example of how DevOps engineers can implement proactive cost optimization strategies on AWS. By automating the cleanup of stale resources like EBS snapshots, organizations can significantly reduce their cloud expenditure and maintain an efficient cloud environment. The principles demonstrated here can be extended to optimize costs for other AWS services such as S3, RDS, EKS, and more. This is a fundamental skill for any cloud and DevOps professional.
 
 **Demonstration of Cost-Optimization**
+
+
 <img width="1299" height="656" alt="image" src="https://github.com/user-attachments/assets/53a4d06f-c91e-4231-b88a-01c64147adfe" />
+
