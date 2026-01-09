@@ -39,3 +39,4 @@ Environment Variables: You can use environment variables to pass configuration v
 
 Function URL Usage: The enabled Function URL can be used to access the application from outside.
 
+
