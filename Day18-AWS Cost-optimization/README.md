@@ -1,4 +1,4 @@
-**AWS Cost Optimization Project: Event-Driven Serverless with Lambda**
+****AWS Cost Optimization Project: Event-Driven Serverless with Lambda****
 
 # Introduction
 This project demonstrates how DevOps and Cloud Engineers can implement cloud cost optimization in real-time organizational settings using AWS Lambda functions and an event-driven serverless architecture. Cost optimization is a crucial aspect of cloud management, often overlooked after migrating to the cloud. This project focuses on identifying and cleaning up "stale" AWS resources to prevent unnecessary costs.
@@ -67,5 +67,6 @@ This project serves as a practical example of how DevOps engineers can implement
 
 
 <img width="1299" height="656" alt="image" src="https://github.com/user-attachments/assets/53a4d06f-c91e-4231-b88a-01c64147adfe" />
+
 
 
