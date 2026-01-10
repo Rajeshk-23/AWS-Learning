@@ -1,4 +1,5 @@
 # # Terraform with AWS Project
+
 This project demonstrates how to automate infrastructure creation on AWS using Terraform. It is designed to guide users through setting up a web application environment, covering essential AWS services and best practices for Infrastructure as Code (IaC).
 
 **Project Overview**
