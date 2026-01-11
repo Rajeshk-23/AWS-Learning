@@ -95,7 +95,7 @@ Primary Purpose: Used for deploying and managing virtual appliances.
 
 Use Cases: Specifically designed for third-party virtual appliances such as firewalls, intrusion detection/prevention systems (IDS/IPS), and VPNs.
 
-**Characteristics:**
+**Characteristics:** 
 
 Offers high security, capable of sending highly encrypted packets to virtual appliances.
 Handles specific traffic types that ALBs and NLBs are not suited for, ensuring secure and efficient operation of security and networking appliances.
