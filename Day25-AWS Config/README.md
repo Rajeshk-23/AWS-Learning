@@ -1,4 +1,4 @@
-Extract the core topic: AWS Config and its role in compliance.
+**Extract the core topic: AWS Config and its role in compliance.**
 
 Identify the problem AWS Config solves: Ensuring AWS resources adhere to organizational rules/regulations, especially concerning security and best practices.
 
@@ -32,18 +32,31 @@ This repository contains resources and explanations for understanding and implem
 **Table of Contents**
 
 Introduction to AWS Config
+
 The Compliance Problem
+
 How AWS Config Solves It
+
 Demonstration: EC2 Monitoring Compliance
+
 Scenario
+
 Solution Overview
+
 Setting up AWS Config and Lambda for Custom Rules
+
 Prerequisites
+
 Creating the Lambda Function
+
 Configuring IAM Permissions for Lambda
+
 Creating a Custom AWS Config Rule
+
 Troubleshooting Tips
+
 Extend Your Learning
+
 
 
 ## Introduction to AWS Config
@@ -162,6 +175,7 @@ Modify the AWS Config rule to monitor AWS S3 Bucket resources.
 Update the Lambda function code to use the S3 client (boto3.client('s3')) and check the relevant S3 bucket properties (e.g., PublicAccessBlockConfiguration, Tagging).
 Different EC2 Rules: Implement a rule to check if specific instance types are being used or if specific tags are present on EC2 instances.
 This hands-on practice will solidify your knowledge of AWS Config and its powerful capabilities for maintaining a compliant and secure AWS environment.
+
 
 
 
