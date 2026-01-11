@@ -1,3 +1,5 @@
+#cloudwatch_metrics
+
 from flask import Flask
 import time
 import random
@@ -64,4 +66,5 @@ def log_metric(metric_name, value):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
+
     
