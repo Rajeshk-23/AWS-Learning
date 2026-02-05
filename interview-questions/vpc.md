@@ -1,3 +1,5 @@
+
+
 ### 1. What is Amazon Virtual Private Cloud (VPC)?
 Amazon VPC is a logically isolated section of the AWS Cloud where you can launch resources in a virtual network that you define. It allows you to control your network environment, including IP addresses, subnets, and security settings.
 
